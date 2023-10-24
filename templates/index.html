@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>ComputeX</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="navbar-logo">
+            <h1 class="navbar-title">COMPUTEX</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="contornofor">
+            <div id="formulario">
+                <h1>BIENVENIDO A COMPUTEX</h1>
+                <form action="/" method="POST" class="inputs">
+                    <h3>INTRODUCE LA FUNCIÓN A GRÁFICAR</h3>
+                    <input type="text" name="funcion" placeholder="x^3-3*x^2" required>
+                    <h3>INTRODUCE EL RANGO DE X</h3>
+                    <div class="formulario-x">
+                        <input type="text" name="limite1" placeholder="-5" required>
+                        <input type="text" name="limite2" placeholder="5" required>
+                    </div>
+                    <button type="submit">ENVIAR</button>
+                </form>
+            </div>
+        </div>
+        <div id="resultados">
+            <div class="respo">
+                <h3>MÁXIMO:</h3>
+                <label for="Máximo">{{ maximo }}</label>
+                <h3>MÍNIMO:</h3>
+                <label for="Mínimo">{{ minimo }}</label>
+                <h3>PUNTO(S) DE INFLEXIÓN:</h3>
+                <label for="Inflexion">{{ inflexion }}</label>
+            </div>
+        </div>
+        <div id="contornogra">
+            <div id="grafica">
+                {% if imagen %}
+                <img src="{{ url_for('static', filename='grafica.png') }}" alt="Gráfica de la función">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
